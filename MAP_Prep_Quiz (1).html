@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pioneer Academy MAP Prep Quiz — Sessions 2, 3 & 4</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:    #1F4E79;
+    --blue-md: #2E75B6;
+    --blue-lt: #D6E4F0;
+    --green:   #1D6A39;
+    --green-lt:#D4EDDA;
+    --purple:  #4A235A;
+    --purp-lt: #EAE0F5;
+    --amber:   #7D4E00;
+    --amber-lt:#FFF3CD;
+    --teal:    #0C5C6B;
+    --teal-lt: #D0EEF2;
+    --red-lt:  #FDECEA;
+    --red-dk:  #7B241C;
+    --gray-lt: #F5F5F5;
+    --gray-md: #CCCCCC;
+    --gray-dk: #555555;
+    --white:   #FFFFFF;
+    --black:   #1A1A1A;
+  }
+
+  body {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--black);
+    background: #F8F7F4;
+    padding: 0 0 60px;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 28px 24px 22px;
+    text-align: center;
+  }
+  .site-header h1 { font-size: 22px; font-weight: 700; font-family: Arial, sans-serif; margin-bottom: 6px; }
+  .site-header p  { font-size: 13px; opacity: .8; font-family: Arial, sans-serif; }
+
+  /* ── Progress bar ── */
+  #progress-wrap {
+    position: sticky; top: 0; z-index: 100;
+    background: #fff; border-bottom: 1px solid var(--gray-md);
+    padding: 10px 24px; display: flex; align-items: center; gap: 14px;
+  }
+  #progress-bar-outer {
+    flex: 1; height: 8px; background: var(--gray-md); border-radius: 99px; overflow: hidden;
+  }
+  #progress-bar-inner {
+    height: 100%; background: var(--blue-md); border-radius: 99px;
+    transition: width .3s ease; width: 0%;
+  }
+  #progress-label { font-size: 12px; font-family: Arial, sans-serif; color: var(--gray-dk); white-space: nowrap; }
+
+  /* ── Container ── */
+  .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+
+  /* ── Session section ── */
+  .session-header {
+    margin: 32px 0 0;
+    padding: 14px 20px;
+    border-radius: 8px 8px 0 0;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  .session-header h2 { font-size: 16px; font-weight: 700; margin-bottom: 2px; }
+  .session-header p  { font-size: 12px; opacity: .85; }
+  .s2 { background: var(--purple); }
+  .s3 { background: var(--blue-md); }
+  .s4 { background: var(--teal); }
+
+  /* ── Passage box ── */
+  .passage-box {
+    background: var(--white);
+    border: 1px solid var(--gray-md);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    padding: 20px 22px;
+    margin-bottom: 20px;
+  }
+  .passage-label {
+    font-size: 11px; font-weight: 700; font-family: Arial, sans-serif;
+    text-transform: uppercase; letter-spacing: .06em; color: var(--gray-dk);
+    margin-bottom: 10px;
+  }
+  .passage-title { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
+  .passage-text p { margin-bottom: 12px; font-size: 14px; line-height: 1.75; }
+  .passage-text p:last-child { margin-bottom: 0; }
+  .para-num { font-size: 12px; font-weight: 700; color: var(--gray-dk); font-family: Arial, sans-serif; margin-right: 8px; }
+
+  .passage-note {
+    background: var(--blue-lt);
+    border-left: 4px solid var(--blue-md);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    font-size: 13px;
+    font-family: Arial, sans-serif;
+    color: var(--navy);
+  }
+  .passage-note a { color: var(--blue-md); }
+  .passage-note strong { display: block; margin-bottom: 4px; }
+
+  /* ── Question card ── */
+  .q-card {
+    background: var(--white);
+    border: 1px solid var(--gray-md);
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 14px;
+  }
+  .q-meta {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 10px; font-family: Arial, sans-serif;
+  }
+  .q-num {
+    font-size: 12px; font-weight: 700; color: var(--gray-dk);
+    text-transform: uppercase; letter-spacing: .04em;
+  }
+  .q-skill {
+    font-size: 11px; color: var(--gray-dk);
+    background: var(--gray-lt); padding: 2px 8px; border-radius: 99px;
+    border: 1px solid var(--gray-md);
+  }
+  .part-ab-note {
+    font-size: 12px; font-family: Arial, sans-serif; color: var(--purple);
+    font-style: italic; margin-bottom: 8px;
+  }
+  .q-stem {
+    font-size: 15px; line-height: 1.6; margin-bottom: 14px;
+  }
+  .q-quote {
+    background: var(--blue-lt); border-radius: 6px; padding: 10px 14px;
+    margin-bottom: 12px; font-size: 14px; font-style: italic; color: #333;
+  }
+
+  /* ── Answer choices ── */
+  .choices { display: flex; flex-direction: column; gap: 8px; }
+  .choice-label {
+    display: flex; align-items: flex-start; gap: 12px;
+    padding: 10px 14px; border-radius: 6px; cursor: pointer;
+    border: 1.5px solid var(--gray-md);
+    background: var(--white);
+    transition: border-color .12s, background .12s;
+    font-size: 14px; line-height: 1.5;
+  }
+  .choice-label:hover { border-color: var(--blue-md); background: var(--blue-lt); }
+  .choice-label input { display: none; }
+  .choice-letter {
+    font-weight: 700; font-family: Arial, sans-serif; font-size: 13px;
+    min-width: 22px; color: var(--gray-dk); flex-shrink: 0; padding-top: 1px;
+  }
+
+  /* States after answer */
+  .choice-label.correct   { border-color: #6EBF8B; background: var(--green-lt); }
+  .choice-label.incorrect { border-color: #E08080; background: var(--red-lt); }
+  .choice-label.correct .choice-letter   { color: var(--green); }
+  .choice-label.incorrect .choice-letter { color: var(--red-dk); }
+  .choice-label.disabled { cursor: default; pointer-events: none; }
+
+  /* ── Feedback ── */
+  .feedback {
+    display: none; margin-top: 12px; padding: 10px 14px;
+    border-radius: 6px; font-size: 13px; font-family: Arial, sans-serif;
+    line-height: 1.55;
+  }
+  .feedback.show { display: block; }
+  .feedback.correct-fb   { background: var(--green-lt); color: #0A4020; border-left: 4px solid var(--green); }
+  .feedback.incorrect-fb { background: var(--red-lt);   color: var(--red-dk); border-left: 4px solid #C0605B; }
+  .feedback .trap-line { margin-top: 6px; padding-top: 6px; border-top: 1px solid rgba(0,0,0,.1); }
+  .feedback .trap-label { font-weight: 700; }
+
+  /* ── Score panel ── */
+  #score-panel {
+    display: none;
+    background: var(--white); border: 1px solid var(--gray-md);
+    border-radius: 10px; padding: 28px 24px; margin: 32px 0;
+    text-align: center; font-family: Arial, sans-serif;
+  }
+  #score-panel.show { display: block; }
+  .score-big { font-size: 52px; font-weight: 700; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+  .score-sub { font-size: 15px; color: var(--gray-dk); margin-bottom: 20px; }
+  .score-breakdown {
+    display: flex; justify-content: center; gap: 24px; flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .score-session { text-align: center; }
+  .score-session .val { font-size: 22px; font-weight: 700; color: var(--blue-md); display: block; }
+  .score-session .lbl { font-size: 12px; color: var(--gray-dk); }
+  .score-bar-wrap { background: var(--gray-lt); border-radius: 99px; height: 10px; margin: 0 auto 20px; max-width: 400px; overflow: hidden; }
+  .score-bar-fill { height: 100%; border-radius: 99px; background: var(--blue-md); transition: width 1s ease; width: 0; }
+
+  .skill-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 10px; margin-bottom: 20px; text-align: left;
+  }
+  .skill-item { background: var(--gray-lt); border-radius: 6px; padding: 10px 12px; }
+  .skill-item .sk-name { font-size: 12px; font-weight: 700; margin-bottom: 4px; }
+  .skill-item .sk-bar-bg { background: var(--gray-md); border-radius: 99px; height: 6px; overflow: hidden; }
+  .skill-item .sk-bar { height: 100%; border-radius: 99px; transition: width 1s ease; }
+
+  .reset-btn {
+    background: var(--navy); color: #fff; border: none; border-radius: 6px;
+    padding: 10px 28px; font-size: 14px; font-family: Arial, sans-serif;
+    font-weight: 700; cursor: pointer;
+  }
+  .reset-btn:hover { background: var(--blue-md); }
+
+  /* ── Submit button ── */
+  #submit-wrap { text-align: center; margin: 24px 0 8px; }
+  #submit-btn {
+    background: var(--navy); color: #fff; border: none; border-radius: 6px;
+    padding: 12px 36px; font-size: 15px; font-family: Arial, sans-serif;
+    font-weight: 700; cursor: pointer; display: none;
+  }
+  #submit-btn:hover { background: var(--blue-md); }
+  #submit-btn.visible { display: inline-block; }
+
+  .section-divider {
+    font-size: 11px; font-weight: 700; font-family: Arial, sans-serif;
+    text-transform: uppercase; letter-spacing: .06em; color: var(--gray-dk);
+    margin: 24px 0 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="site-header">
+  <h1>Pioneer Academy MAP Prep</h1>
+  <p>Sessions 2, 3 &amp; 4 &nbsp;·&nbsp; 32 questions &nbsp;·&nbsp; MAP-style reading comprehension</p>
+</div>
+
+<div id="progress-wrap">
+  <div id="progress-bar-outer"><div id="progress-bar-inner"></div></div>
+  <div id="progress-label">0 of 32 answered</div>
+</div>
+
+<div class="container" id="quiz-container">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SESSION 2
+══════════════════════════════════════════════════════════════ -->
+<div class="session-header s2">
+  <h2>Session 2</h2>
+  <p>Passages: "The Tell-Tale Heart" (Poe) &amp; "The Psychology of Suspense"</p>
+</div>
+<div class="passage-box">
+  <div class="passage-note">
+    <strong>Before answering:</strong>
+    Read the full text of <a href="https://www.commonlit.org/en/texts/the-tell-tale-heart" target="_blank">"The Tell-Tale Heart" on CommonLit</a>. Key paragraphs are printed below for reference during questions.
+  </div>
+  <div class="passage-label">Passage 1 — Literary · "The Tell-Tale Heart" by Edgar Allan Poe</div>
+  <div class="passage-title">The Tell-Tale Heart <span style="font-size:13px;font-weight:400;color:#666;">(excerpt)</span></div>
+  <div class="passage-text">
+    <p><span class="para-num">1</span>TRUE! — nervous — very, very dreadfully nervous I had been and am; but why WILL you say that I am mad? The disease had sharpened my senses — not destroyed — not dulled them. Above all was the sense of hearing acute. I heard all things in the heaven and in the earth. I heard many things in hell. How, then, am I mad? Hearken! and observe how healthily — how calmly I can tell you the whole story.</p>
+    <p><span class="para-num">2</span>It is impossible to say how first the idea entered my brain; but once conceived, it haunted me day and night. Object there was none. Passion there was none. I loved the old man. He had never wronged me. He had never given me insult. For his gold I had no desire. I think it was his eye! yes, it was this! He had the eye of a vulture — a pale blue eye, with a film over it. Whenever it fell upon me, my blood ran cold.</p>
+    <p><span class="para-num">3</span>You fancy me mad. Madmen know nothing. But you should have seen me. You should have seen how wisely I proceeded — with what caution — with what foresight — with what dissimulation I went to work!</p>
+    <p><span class="para-num">4</span>"Villains!" I shrieked, "dissemble no more! I admit the deed! — tear up the planks! — here, here! — it is the beating of his hideous heart!"</p>
+  </div>
+</div>
+
+<!-- Q1 -->
+<div class="q-card" data-q="1" data-correct="B" data-skill="Unreliable narrator / inference" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 1</span><span class="q-skill">Unreliable narrator / inference</span></div>
+  <div class="q-stem">The narrator opens the story by insisting he is NOT mad. What does this opening most suggest to the reader?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q1" value="A"><span class="choice-letter">A</span>The narrator is telling the truth and has simply been misunderstood by others.</label>
+    <label class="choice-label"><input type="radio" name="q1" value="B"><span class="choice-letter">B</span>The narrator's need to argue for his own sanity is itself a sign that something is wrong.</label>
+    <label class="choice-label"><input type="radio" name="q1" value="C"><span class="choice-letter">C</span>The narrator is trying to warn the reader about the dangers of certain diseases.</label>
+    <label class="choice-label"><input type="radio" name="q1" value="D"><span class="choice-letter">D</span>The narrator is attempting to entertain the reader with an exciting story.</label>
+  </div>
+  <div class="feedback" id="fb-q1"></div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card" data-q="2" data-correct="B" data-skill="Vocabulary in context" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 2</span><span class="q-skill">Vocabulary in context</span></div>
+  <div class="q-quote">"He had the eye of a vulture — a pale blue eye, with a film over it. Whenever it fell upon me, my blood ran cold." (paragraph 2)</div>
+  <div class="q-stem">As used here, what does the phrase "my blood ran cold" most nearly mean?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q2" value="A"><span class="choice-letter">A</span>The narrator became physically ill from a low body temperature.</label>
+    <label class="choice-label"><input type="radio" name="q2" value="B"><span class="choice-letter">B</span>The narrator felt a sudden, powerful feeling of fear or dread.</label>
+    <label class="choice-label"><input type="radio" name="q2" value="C"><span class="choice-letter">C</span>The narrator decided to act without thinking about the consequences.</label>
+    <label class="choice-label"><input type="radio" name="q2" value="D"><span class="choice-letter">D</span>The narrator lost feeling in his hands and feet.</label>
+  </div>
+  <div class="feedback" id="fb-q2"></div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card" data-q="3" data-correct="C" data-skill="Character / inference" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 3</span><span class="q-skill">Character / inference</span></div>
+  <div class="q-stem">Based on the passage, which word BEST describes the narrator's state of mind?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q3" value="A"><span class="choice-letter">A</span>Calm and logical, carefully explaining his actions</label>
+    <label class="choice-label"><input type="radio" name="q3" value="B"><span class="choice-letter">B</span>Sad and regretful about what he has done</label>
+    <label class="choice-label"><input type="radio" name="q3" value="C"><span class="choice-letter">C</span>Unstable and obsessed, though he believes himself to be rational</label>
+    <label class="choice-label"><input type="radio" name="q3" value="D"><span class="choice-letter">D</span>Angry at the old man for treating him unfairly</label>
+  </div>
+  <div class="feedback" id="fb-q3"></div>
+</div>
+
+<!-- Q4A -->
+<div class="q-card" data-q="4" data-correct="B" data-skill="Theme — Part A" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 4 — Part A</span><span class="q-skill">Theme</span></div>
+  <div class="part-ab-note">⚠ Answer Part A first. Do not read Part B until you have chosen your answer here.</div>
+  <div class="q-stem">Which statement best expresses a THEME of "The Tell-Tale Heart"?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q4" value="A"><span class="choice-letter">A</span>Murder is always discovered because criminals make careless mistakes.</label>
+    <label class="choice-label"><input type="radio" name="q4" value="B"><span class="choice-letter">B</span>A guilty conscience cannot be suppressed and will eventually betray a person.</label>
+    <label class="choice-label"><input type="radio" name="q4" value="C"><span class="choice-letter">C</span>People who care too much about small details will lose their minds.</label>
+    <label class="choice-label"><input type="radio" name="q4" value="D"><span class="choice-letter">D</span>The elderly should not be left alone because they are vulnerable to danger.</label>
+  </div>
+  <div class="feedback" id="fb-q4"></div>
+</div>
+
+<!-- Q4B -->
+<div class="q-card" data-q="5" data-correct="C" data-skill="Text evidence — Part B" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 4 — Part B</span><span class="q-skill">Text evidence</span></div>
+  <div class="part-ab-note">Which detail from the story BEST supports the answer to Part A above?</div>
+  <div class="q-stem">Which detail from the story BEST supports your answer to Part A?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q5" value="A"><span class="choice-letter">A</span>The narrator carefully planned the murder over the course of seven nights.</label>
+    <label class="choice-label"><input type="radio" name="q5" value="B"><span class="choice-letter">B</span>The narrator felt no hatred for the old man and did not kill him for money.</label>
+    <label class="choice-label"><input type="radio" name="q5" value="C"><span class="choice-letter">C</span>The narrator confessed after hearing what he believed was the old man's heartbeat growing louder.</label>
+    <label class="choice-label"><input type="radio" name="q5" value="D"><span class="choice-letter">D</span>The narrator was convinced that his senses were sharpened, not destroyed, by his condition.</label>
+  </div>
+  <div class="feedback" id="fb-q5"></div>
+</div>
+
+<!-- Q5 -->
+<div class="q-card" data-q="6" data-correct="B" data-skill="Author's craft / point of view" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 5</span><span class="q-skill">Author's craft / point of view</span></div>
+  <div class="q-stem">Poe tells this story from the narrator's first-person point of view. How does this choice of narrator MOST affect the reader's experience?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q6" value="A"><span class="choice-letter">A</span>It makes the story more believable because the reader can verify the narrator's claims.</label>
+    <label class="choice-label"><input type="radio" name="q6" value="B"><span class="choice-letter">B</span>It creates dramatic irony because the reader can see the narrator is unreliable while the narrator cannot.</label>
+    <label class="choice-label"><input type="radio" name="q6" value="C"><span class="choice-letter">C</span>It removes all suspense because the narrator explains exactly what will happen.</label>
+    <label class="choice-label"><input type="radio" name="q6" value="D"><span class="choice-letter">D</span>It causes the reader to feel sympathy for the old man rather than the narrator.</label>
+  </div>
+  <div class="feedback" id="fb-q6"></div>
+</div>
+
+<div class="section-divider">Passage 2 — Informational · "The Psychology of Suspense"</div>
+
+<div class="passage-box" style="border-radius:8px;margin-bottom:16px;">
+  <div class="passage-note">
+    <strong>Before answering:</strong> Read the full paired text on CommonLit (paired with "The Tell-Tale Heart"). Key paragraphs are below for reference.
+  </div>
+  <div class="passage-text">
+    <p><span class="para-num">1</span>Why do people willingly seek out frightening stories, horror films, and suspenseful novels — even though these experiences cause real stress? The answer lies in the brain's ancient threat-detection system, which evolved long before humans invented storytelling.</p>
+    <p><span class="para-num">2</span>When a person encounters uncertainty — not knowing what will happen next — the brain triggers the same physiological response it uses to detect predators: elevated heart rate, heightened attention, and the release of adrenaline.</p>
+    <p><span class="para-num">3</span>Suspense in fiction exploits this system deliberately. A skilled author introduces a threat, delays its resolution, and withholds just enough information to keep the reader in a state of productive uncertainty.</p>
+    <p><span class="para-num">4</span>This gap between knowing something is fake and feeling it is real is called "fictional immersion," and research suggests it is what makes certain stories linger in the mind long after they are finished.</p>
+    <p><span class="para-num">5</span>Studies show that readers who regularly engage with suspenseful fiction demonstrate higher levels of empathy and cognitive flexibility than those who do not.</p>
+  </div>
+</div>
+
+<!-- Q6–Q10 -->
+<div class="q-card" data-q="7" data-correct="B" data-skill="Main idea" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 6</span><span class="q-skill">Main idea</span></div>
+  <div class="q-stem">Which statement BEST expresses the main idea of "The Psychology of Suspense"?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q7" value="A"><span class="choice-letter">A</span>Horror films and novels are popular because they allow people to experience danger safely.</label>
+    <label class="choice-label"><input type="radio" name="q7" value="B"><span class="choice-letter">B</span>Suspense in fiction works by triggering a real brain response to uncertainty, which has psychological benefits for readers.</label>
+    <label class="choice-label"><input type="radio" name="q7" value="C"><span class="choice-letter">C</span>The human brain cannot tell the difference between fictional events and real ones.</label>
+    <label class="choice-label"><input type="radio" name="q7" value="D"><span class="choice-letter">D</span>Authors who write suspenseful fiction are more skilled than authors who write in other genres.</label>
+  </div>
+  <div class="feedback" id="fb-q7"></div>
+</div>
+
+<div class="q-card" data-q="8" data-correct="B" data-skill="Vocabulary in context" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 7</span><span class="q-skill">Vocabulary in context</span></div>
+  <div class="q-quote">"…the brain triggers the same physiological response it uses to detect predators: elevated heart rate, heightened attention, and the release of adrenaline." (paragraph 2)</div>
+  <div class="q-stem">As used here, the word "physiological" most nearly means:</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q8" value="A"><span class="choice-letter">A</span>emotional or psychological</label>
+    <label class="choice-label"><input type="radio" name="q8" value="B"><span class="choice-letter">B</span>related to the physical functions of the body</label>
+    <label class="choice-label"><input type="radio" name="q8" value="C"><span class="choice-letter">C</span>deliberate and carefully planned</label>
+    <label class="choice-label"><input type="radio" name="q8" value="D"><span class="choice-letter">D</span>ancient and no longer useful</label>
+  </div>
+  <div class="feedback" id="fb-q8"></div>
+</div>
+
+<div class="q-card" data-q="9" data-correct="B" data-skill="Author's purpose / evidence" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 8</span><span class="q-skill">Author's purpose / evidence</span></div>
+  <div class="q-stem">Why does the author include information about "fictional immersion" in paragraph 4?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q9" value="A"><span class="choice-letter">A</span>To argue that readers who believe fiction is real are making a logical error.</label>
+    <label class="choice-label"><input type="radio" name="q9" value="B"><span class="choice-letter">B</span>To explain why some suspenseful stories are remembered and discussed more than others.</label>
+    <label class="choice-label"><input type="radio" name="q9" value="C"><span class="choice-letter">C</span>To prove that horror fiction is more valuable than other types of writing.</label>
+    <label class="choice-label"><input type="radio" name="q9" value="D"><span class="choice-letter">D</span>To warn readers about the negative effects of spending too much time reading fiction.</label>
+  </div>
+  <div class="feedback" id="fb-q9"></div>
+</div>
+
+<div class="q-card" data-q="10" data-correct="B" data-skill="Text structure" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 9</span><span class="q-skill">Text structure</span></div>
+  <div class="q-stem">How is "The Psychology of Suspense" primarily organized?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q10" value="A"><span class="choice-letter">A</span>A problem is introduced, followed by a series of failed attempts to solve it.</label>
+    <label class="choice-label"><input type="radio" name="q10" value="B"><span class="choice-letter">B</span>A question is posed and then answered using scientific explanation and evidence.</label>
+    <label class="choice-label"><input type="radio" name="q10" value="C"><span class="choice-letter">C</span>Two opposing views about fiction are presented and then compared.</label>
+    <label class="choice-label"><input type="radio" name="q10" value="D"><span class="choice-letter">D</span>A series of historical events about storytelling are described in time order.</label>
+  </div>
+  <div class="feedback" id="fb-q10"></div>
+</div>
+
+<div class="q-card" data-q="11" data-correct="B" data-skill="Paired passage synthesis" data-session="2">
+  <div class="q-meta"><span class="q-num">Question 10</span><span class="q-skill">Paired passage synthesis</span></div>
+  <div class="q-stem">How do "The Tell-Tale Heart" and "The Psychology of Suspense" COMPLEMENT each other?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q11" value="A"><span class="choice-letter">A</span>Poe's story illustrates the fear of death, while the article explains how people cope with loss.</label>
+    <label class="choice-label"><input type="radio" name="q11" value="B"><span class="choice-letter">B</span>Poe's story demonstrates the techniques of suspense that the article scientifically explains.</label>
+    <label class="choice-label"><input type="radio" name="q11" value="C"><span class="choice-letter">C</span>Poe's story argues that madness is real, while the article argues that it is only fictional.</label>
+    <label class="choice-label"><input type="radio" name="q11" value="D"><span class="choice-letter">D</span>Both texts argue that fear is ultimately harmful to mental health.</label>
+  </div>
+  <div class="feedback" id="fb-q11"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SESSION 3
+══════════════════════════════════════════════════════════════ -->
+<div class="session-header s3" style="margin-top:36px;">
+  <h2>Session 3</h2>
+  <p>Passages: "Lather and Nothing Else" (Téllez) &amp; "Harrison Bergeron" (Vonnegut)</p>
+</div>
+<div class="passage-box">
+  <div class="passage-note">
+    <strong>Before answering:</strong> Read the full text of <a href="https://www.commonlit.org/en/texts/lather-and-nothing-else" target="_blank">"Lather and Nothing Else" on CommonLit</a>.
+  </div>
+  <div class="passage-label">Passage 1 — Literary · "Lather and Nothing Else" by Hernando Téllez</div>
+  <div class="passage-text">
+    <p><span class="para-num">1</span>He came in without a word. I was stropping my best razor. And when I recognized him, I started to tremble. But he did not notice. To cover my nervousness, I went on honing the razor. Captain Torres was in the habit of coming to my shop every two weeks for a shave, and I was an enemy of his — or rather, he was my enemy.</p>
+    <p><span class="para-num">2</span>I began to work carefully on his beard. My hands started trembling again. The man could not have noticed it — that was fortunate for me. I wished he had not come in. Probably many of the men he had ordered shot had been afraid, just as I was now.</p>
+    <p><span class="para-num">3</span>What do you want to do with him? Kill him? No. And just what would you do with the body? Where would you hide it? You would have to flee. Leave all this behind. No. You don't have the guts for that. It would be better to let things take their course. Don't put yourself in a position of having to kill again.</p>
+    <p><span class="para-num">4</span>I am a revolutionary, not a murderer. And it would be so easy to kill him. I am a good barber. The best in this town, if I may say so myself. He won't feel a thing. He'll die well. But I don't want to be a barber who shaves the corpse of his victim.</p>
+    <p><span class="para-num">5</span>"You'll be given a medal, friend," Torres said when the shave was over. "You didn't kill me. Everyone said you would. But it's not easy to kill. I know what I'm talking about."</p>
+  </div>
+</div>
+
+<!-- Q11–15 (Lather) -->
+<div class="q-card" data-q="12" data-correct="C" data-skill="Character motivation — Part A" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 11 — Part A</span><span class="q-skill">Character motivation</span></div>
+  <div class="part-ab-note">⚠ Answer Part A first. Do not read Part B until you have chosen your answer here.</div>
+  <div class="q-stem">What is the barber's PRIMARY reason for NOT killing Captain Torres?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q12" value="A"><span class="choice-letter">A</span>He is too afraid of getting caught by the other soldiers.</label>
+    <label class="choice-label"><input type="radio" name="q12" value="B"><span class="choice-letter">B</span>He cannot find a way to hide the body after the murder.</label>
+    <label class="choice-label"><input type="radio" name="q12" value="C"><span class="choice-letter">C</span>His identity as a skilled barber — not a killer — is more important to him than revenge.</label>
+    <label class="choice-label"><input type="radio" name="q12" value="D"><span class="choice-letter">D</span>He feels genuine affection for Captain Torres and cannot bring himself to hurt him.</label>
+  </div>
+  <div class="feedback" id="fb-q12"></div>
+</div>
+
+<div class="q-card" data-q="13" data-correct="C" data-skill="Text evidence — Part B" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 11 — Part B</span><span class="q-skill">Text evidence</span></div>
+  <div class="part-ab-note">Which sentence BEST supports your answer to Part A?</div>
+  <div class="q-stem">Which sentence from the passage BEST supports the answer to Part A?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q13" value="A"><span class="choice-letter">A</span>"Captain Torres was in the habit of coming to my shop every two weeks for a shave." (paragraph 1)</label>
+    <label class="choice-label"><input type="radio" name="q13" value="B"><span class="choice-letter">B</span>"You would have to flee. Leave all this behind." (paragraph 3)</label>
+    <label class="choice-label"><input type="radio" name="q13" value="C"><span class="choice-letter">C</span>"I don't want to be a barber who shaves the corpse of his victim." (paragraph 4)</label>
+    <label class="choice-label"><input type="radio" name="q13" value="D"><span class="choice-letter">D</span>"You'll be given a medal, friend," Torres said when the shave was over.</label>
+  </div>
+  <div class="feedback" id="fb-q13"></div>
+</div>
+
+<div class="q-card" data-q="14" data-correct="B" data-skill="Inference" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 12</span><span class="q-skill">Inference</span></div>
+  <div class="q-stem">In paragraph 2, the barber thinks: "Probably many of the men he had ordered shot had been afraid, just as I was now." What does this thought most reveal about the barber?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q14" value="A"><span class="choice-letter">A</span>The barber is planning to avenge the deaths of the men Torres executed.</label>
+    <label class="choice-label"><input type="radio" name="q14" value="B"><span class="choice-letter">B</span>The barber feels a painful connection between himself and Torres's past victims.</label>
+    <label class="choice-label"><input type="radio" name="q14" value="C"><span class="choice-letter">C</span>The barber believes Torres will eventually discover he is a revolutionary.</label>
+    <label class="choice-label"><input type="radio" name="q14" value="D"><span class="choice-letter">D</span>The barber is beginning to change his opinion about whether Torres deserves to die.</label>
+  </div>
+  <div class="feedback" id="fb-q14"></div>
+</div>
+
+<div class="q-card" data-q="15" data-correct="B" data-skill="Vocabulary / character" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 13</span><span class="q-skill">Vocabulary / character</span></div>
+  <div class="q-quote">"I am a revolutionary, not a murderer." (paragraph 4)</div>
+  <div class="q-stem">In context, this statement most clearly shows that the barber:</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q15" value="A"><span class="choice-letter">A</span>Does not believe that political violence is ever justified in any situation.</label>
+    <label class="choice-label"><input type="radio" name="q15" value="B"><span class="choice-letter">B</span>Draws a firm distinction between fighting for a cause and killing for personal reasons.</label>
+    <label class="choice-label"><input type="radio" name="q15" value="C"><span class="choice-letter">C</span>Has decided to leave the revolutionary movement and return to a normal life.</label>
+    <label class="choice-label"><input type="radio" name="q15" value="D"><span class="choice-letter">D</span>Is trying to convince Torres that he has no reason to fear the barber.</label>
+  </div>
+  <div class="feedback" id="fb-q15"></div>
+</div>
+
+<div class="q-card" data-q="16" data-correct="B" data-skill="Theme" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 14</span><span class="q-skill">Theme</span></div>
+  <div class="q-stem">Which statement BEST expresses a theme of "Lather and Nothing Else"?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q16" value="A"><span class="choice-letter">A</span>Revenge is always tempting but ultimately leads to a person's downfall.</label>
+    <label class="choice-label"><input type="radio" name="q16" value="B"><span class="choice-letter">B</span>A person's professional identity and personal integrity can be stronger than hatred or fear.</label>
+    <label class="choice-label"><input type="radio" name="q16" value="C"><span class="choice-letter">C</span>Political conflicts force ordinary people to make impossible moral choices.</label>
+    <label class="choice-label"><input type="radio" name="q16" value="D"><span class="choice-letter">D</span>True courage means taking action even when the consequences are dangerous.</label>
+  </div>
+  <div class="feedback" id="fb-q16"></div>
+</div>
+
+<div class="section-divider">Passage 2 — Literary · "Harrison Bergeron" by Kurt Vonnegut</div>
+<div class="passage-box" style="border-radius:8px;margin-bottom:16px;">
+  <div class="passage-note">
+    <strong>Before answering:</strong> Read the full text of <a href="https://www.commonlit.org/en/texts/harrison-bergeron" target="_blank">"Harrison Bergeron" on CommonLit</a>.
+  </div>
+  <div class="passage-text">
+    <p><span class="para-num">1</span>The year was 2081, and everybody was finally equal. They weren't only equal before God and the law. They were equal every which way. Nobody was smarter than anybody else. Nobody was better looking than anybody else. Nobody was stronger or quicker than anybody else. All this equality was due to the 211th, 212th, and 213th Amendments to the Constitution, and to the unceasing vigilance of agents of the United States Handicapper General.</p>
+    <p><span class="para-num">2</span>George, while his intelligence was way above normal, had a little mental handicap radio in his ear. He was required by law to wear it at all times. Every twenty seconds or so, the transmitter would send out some sharp noise to keep people like George from taking unfair advantage of their brains.</p>
+    <p><span class="para-num">3</span>Harrison tore the straps of the handicap bag like wet tissue paper, tore them, snapped them. He flung away his rubber-ball nose. "I am the Emperor!" cried Harrison. "Do you hear? I am the Emperor! Everybody must do what I say at once!"</p>
+    <p><span class="para-num">4</span>Diana Moon Glampers, the Handicapper General, came into the studio with a double-barreled ten-gauge shotgun. She fired twice, and the Emperor and the Empress were dead before they hit the floor.</p>
+  </div>
+</div>
+
+<!-- Q16–21 (Harrison Bergeron) -->
+<div class="q-card" data-q="17" data-correct="B" data-skill="Author's purpose / satire" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 15</span><span class="q-skill">Author's purpose / satire</span></div>
+  <div class="q-stem">In paragraph 1, Vonnegut describes a world where "everybody was finally equal" in an extreme, exaggerated way. What is his PURPOSE in describing equality this way?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q17" value="A"><span class="choice-letter">A</span>To celebrate the idea that all people should be treated as equals under the law.</label>
+    <label class="choice-label"><input type="radio" name="q17" value="B"><span class="choice-letter">B</span>To criticize a society that mistakes enforced sameness for genuine equality.</label>
+    <label class="choice-label"><input type="radio" name="q17" value="C"><span class="choice-letter">C</span>To warn readers that the government will eventually control all forms of intelligence.</label>
+    <label class="choice-label"><input type="radio" name="q17" value="D"><span class="choice-letter">D</span>To show that the future will be better than the present because unfairness will end.</label>
+  </div>
+  <div class="feedback" id="fb-q17"></div>
+</div>
+
+<div class="q-card" data-q="18" data-correct="A" data-skill="Character motivation / inference" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 16</span><span class="q-skill">Character motivation / inference</span></div>
+  <div class="q-stem">George tells his wife the penalty for removing his handicap weights. What does this MOST reveal about George?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q18" value="A"><span class="choice-letter">A</span>George secretly wishes he could remove his handicap but is restrained by fear of the law.</label>
+    <label class="choice-label"><input type="radio" name="q18" value="B"><span class="choice-letter">B</span>George completely agrees with the government's system and would never consider removing his handicap.</label>
+    <label class="choice-label"><input type="radio" name="q18" value="C"><span class="choice-letter">C</span>George is plotting with the revolutionaries to overthrow the Handicapper General.</label>
+    <label class="choice-label"><input type="radio" name="q18" value="D"><span class="choice-letter">D</span>George is angry at his wife for suggesting that he remove his handicap weights.</label>
+  </div>
+  <div class="feedback" id="fb-q18"></div>
+</div>
+
+<div class="q-card" data-q="19" data-correct="B" data-skill="Vocabulary in context" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 17</span><span class="q-skill">Vocabulary in context</span></div>
+  <div class="q-quote">"…to the unceasing vigilance of agents of the United States Handicapper General." (paragraph 1)</div>
+  <div class="q-stem">The word "vigilance" most nearly means:</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q19" value="A"><span class="choice-letter">A</span>generosity</label>
+    <label class="choice-label"><input type="radio" name="q19" value="B"><span class="choice-letter">B</span>careful and constant watchfulness</label>
+    <label class="choice-label"><input type="radio" name="q19" value="C"><span class="choice-letter">C</span>legal authority</label>
+    <label class="choice-label"><input type="radio" name="q19" value="D"><span class="choice-letter">D</span>public celebration</label>
+  </div>
+  <div class="feedback" id="fb-q19"></div>
+</div>
+
+<div class="q-card" data-q="20" data-correct="B" data-skill="Theme — Part A" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 18 — Part A</span><span class="q-skill">Theme</span></div>
+  <div class="part-ab-note">⚠ Answer Part A first. Do not read Part B until you have chosen your answer here.</div>
+  <div class="q-stem">Which statement BEST expresses a theme of "Harrison Bergeron"?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q20" value="A"><span class="choice-letter">A</span>True equality requires sacrifice, and a just society must enforce it at all costs.</label>
+    <label class="choice-label"><input type="radio" name="q20" value="B"><span class="choice-letter">B</span>Enforcing sameness destroys individual talent and does not create true equality.</label>
+    <label class="choice-label"><input type="radio" name="q20" value="C"><span class="choice-letter">C</span>Rebellion against unjust laws is always the right choice, even if it ends in failure.</label>
+    <label class="choice-label"><input type="radio" name="q20" value="D"><span class="choice-letter">D</span>Governments should protect citizens from people who are more powerful than others.</label>
+  </div>
+  <div class="feedback" id="fb-q20"></div>
+</div>
+
+<div class="q-card" data-q="21" data-correct="D" data-skill="Text evidence — Part B" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 18 — Part B</span><span class="q-skill">Text evidence</span></div>
+  <div class="part-ab-note">Which sentence BEST supports your answer to Part A?</div>
+  <div class="q-stem">Which sentence BEST supports the answer to Part A?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q21" value="A"><span class="choice-letter">A</span>"All this equality was due to the 211th, 212th, and 213th Amendments." (paragraph 1)</label>
+    <label class="choice-label"><input type="radio" name="q21" value="B"><span class="choice-letter">B</span>"He was required by law to wear it at all times." (paragraph 2)</label>
+    <label class="choice-label"><input type="radio" name="q21" value="C"><span class="choice-letter">C</span>"Diana Moon Glampers…came into the studio with a double-barreled ten-gauge shotgun." (paragraph 4)</label>
+    <label class="choice-label"><input type="radio" name="q21" value="D"><span class="choice-letter">D</span>"Harrison tore the straps of the handicap bag like wet tissue paper." (paragraph 3)</label>
+  </div>
+  <div class="feedback" id="fb-q21"></div>
+</div>
+
+<div class="q-card" data-q="22" data-correct="B" data-skill="Paired literary synthesis" data-session="3">
+  <div class="q-meta"><span class="q-num">Question 19</span><span class="q-skill">Paired literary synthesis</span></div>
+  <div class="q-stem">Both the barber in "Lather and Nothing Else" and George in "Harrison Bergeron" could act against an unjust system but do not. What is the KEY DIFFERENCE between their reasons for inaction?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q22" value="A"><span class="choice-letter">A</span>The barber chooses not to act because he is afraid, while George does not act because he does not care.</label>
+    <label class="choice-label"><input type="radio" name="q22" value="B"><span class="choice-letter">B</span>The barber's inaction is a principled choice rooted in his identity, while George's is shaped by a system that prevents deep thought.</label>
+    <label class="choice-label"><input type="radio" name="q22" value="C"><span class="choice-letter">C</span>The barber is waiting for a better opportunity, while George believes the system is already fair.</label>
+    <label class="choice-label"><input type="radio" name="q22" value="D"><span class="choice-letter">D</span>Both characters fail to act for the same reason: fear of the people in power.</label>
+  </div>
+  <div class="feedback" id="fb-q22"></div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     SESSION 4
+══════════════════════════════════════════════════════════════ -->
+<div class="session-header s4" style="margin-top:36px;">
+  <h2>Session 4</h2>
+  <p>Multi-source argument: "Does the Electoral College Work?" (NJSLA Grade 9, pp. 19–24)</p>
+</div>
+<div class="passage-box">
+  <div class="passage-note">
+    <strong>Before answering:</strong> Read all three Electoral College sources printed in the NJSLA Grade 9 practice test, pages 19–24. The source summary below is for quick reference only.
+  </div>
+  <div class="passage-text" style="font-family:Arial,sans-serif;font-size:13px;">
+    <p><strong>Source 1</strong> — "What Is the Electoral College?" (Office of the Federal Register) — <em>NEUTRAL: explains the process, takes no position.</em></p>
+    <p><strong>Source 2</strong> — "The Indefensible Electoral College" (Bradford Plumer) — <em>AGAINST: argues the system is unfair and should be abolished.</em></p>
+    <p><strong>Source 3</strong> — "In Defense of the Electoral College" (Judge Richard Posner) — <em>FOR: argues it should be kept for 5 practical reasons.</em></p>
+  </div>
+</div>
+
+<!-- Q20–31 (Electoral College) -->
+<div class="q-card" data-q="23" data-correct="B" data-skill="Author's purpose / text structure" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 20</span><span class="q-skill">Author's purpose / text structure</span></div>
+  <div class="q-stem">How does Source 1 differ in PURPOSE from Sources 2 and 3?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q23" value="A"><span class="choice-letter">A</span>Source 1 argues the Electoral College should be kept, while Sources 2 and 3 argue it should change.</label>
+    <label class="choice-label"><input type="radio" name="q23" value="B"><span class="choice-letter">B</span>Source 1 provides a neutral explanation of how the system works, while Sources 2 and 3 each argue a position.</label>
+    <label class="choice-label"><input type="radio" name="q23" value="C"><span class="choice-letter">C</span>Source 1 focuses on history, while Sources 2 and 3 focus only on recent elections.</label>
+    <label class="choice-label"><input type="radio" name="q23" value="D"><span class="choice-letter">D</span>Source 1 was written by a government official, which makes it more reliable than Sources 2 and 3.</label>
+  </div>
+  <div class="feedback" id="fb-q23"></div>
+</div>
+
+<div class="q-card" data-q="24" data-correct="B" data-skill="Main idea / claim" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 21</span><span class="q-skill">Main idea / claim</span></div>
+  <div class="q-stem">Which statement BEST expresses Bradford Plumer's central claim in Source 2?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q24" value="A"><span class="choice-letter">A</span>The Electoral College is a well-designed system that has mostly worked as intended.</label>
+    <label class="choice-label"><input type="radio" name="q24" value="B"><span class="choice-letter">B</span>The Electoral College is unfair to voters, creates dangerous vulnerabilities, and should be abolished.</label>
+    <label class="choice-label"><input type="radio" name="q24" value="C"><span class="choice-letter">C</span>The biggest problem is that it can allow a candidate to win without the most popular votes.</label>
+    <label class="choice-label"><input type="radio" name="q24" value="D"><span class="choice-letter">D</span>The Electoral College could be improved with small changes rather than being replaced.</label>
+  </div>
+  <div class="feedback" id="fb-q24"></div>
+</div>
+
+<div class="q-card" data-q="25" data-correct="C" data-skill="Author's purpose / evidence" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 22</span><span class="q-skill">Author's purpose / evidence</span></div>
+  <div class="q-stem">Why does Plumer include the detail that "seventeen states didn't see the candidates at all" during the 2000 campaign?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q25" value="A"><span class="choice-letter">A</span>To show that the 2000 election was unusual and not typical of how the system works.</label>
+    <label class="choice-label"><input type="radio" name="q25" value="B"><span class="choice-letter">B</span>To argue that voters in non-swing states are less engaged than voters in swing states.</label>
+    <label class="choice-label"><input type="radio" name="q25" value="C"><span class="choice-letter">C</span>To provide a concrete example supporting his claim that the Electoral College is unfair to most voters.</label>
+    <label class="choice-label"><input type="radio" name="q25" value="D"><span class="choice-letter">D</span>To suggest that candidates should be required by law to visit every state.</label>
+  </div>
+  <div class="feedback" id="fb-q25"></div>
+</div>
+
+<div class="q-card" data-q="26" data-correct="B" data-skill="Vocabulary in context" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 23</span><span class="q-skill">Vocabulary in context</span></div>
+  <div class="q-quote">"The Electoral College is widely regarded as an anachronism, a nondemocratic method of selecting a president that ought to be overruled." — Posner, Source 3</div>
+  <div class="q-stem">The word "anachronism" most nearly means:</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q26" value="A"><span class="choice-letter">A</span>a system that is illegal under the Constitution</label>
+    <label class="choice-label"><input type="radio" name="q26" value="B"><span class="choice-letter">B</span>something from the past that no longer fits the present</label>
+    <label class="choice-label"><input type="radio" name="q26" value="C"><span class="choice-letter">C</span>a method that is unfair to certain groups of people</label>
+    <label class="choice-label"><input type="radio" name="q26" value="D"><span class="choice-letter">D</span>a tradition that most people no longer understand</label>
+  </div>
+  <div class="feedback" id="fb-q26"></div>
+</div>
+
+<div class="q-card" data-q="27" data-correct="B" data-skill="Counterargument — Part A" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 24 — Part A</span><span class="q-skill">Counterargument</span></div>
+  <div class="part-ab-note">⚠ Answer Part A first. Do not read Part B until you have chosen your answer here.</div>
+  <div class="q-stem">In Source 3, how does Posner respond to the criticism that the Electoral College causes candidates to ignore most states?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q27" value="A"><span class="choice-letter">A</span>He argues that voters in non-swing states are not interested in presidential campaigns anyway.</label>
+    <label class="choice-label"><input type="radio" name="q27" value="B"><span class="choice-letter">B</span>He argues that swing-state voters are the most informed and engaged, so it benefits elections that they decide.</label>
+    <label class="choice-label"><input type="radio" name="q27" value="C"><span class="choice-letter">C</span>He argues that candidates already visit every major state, so the criticism is inaccurate.</label>
+    <label class="choice-label"><input type="radio" name="q27" value="D"><span class="choice-letter">D</span>He argues that the problem would be worse under a popular vote system.</label>
+  </div>
+  <div class="feedback" id="fb-q27"></div>
+</div>
+
+<div class="q-card" data-q="28" data-correct="C" data-skill="Text evidence — Part B" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 24 — Part B</span><span class="q-skill">Text evidence</span></div>
+  <div class="part-ab-note">Which sentence from Source 3 BEST supports the answer to Part A?</div>
+  <div class="q-stem">Which sentence from Source 3 BEST supports the answer to Part A?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q28" value="A"><span class="choice-letter">A</span>"The Electoral College requires a presidential candidate to have trans-regional appeal." (paragraph 19)</label>
+    <label class="choice-label"><input type="radio" name="q28" value="B"><span class="choice-letter">B</span>"A tie in the nationwide electoral vote is possible because the total number of votes — 538 — is an even number." (paragraph 18)</label>
+    <label class="choice-label"><input type="radio" name="q28" value="C"><span class="choice-letter">C</span>"Voters in toss-up states are more likely to pay close attention to the campaign…knowing that they are going to decide the election." (paragraph 20)</label>
+    <label class="choice-label"><input type="radio" name="q28" value="D"><span class="choice-letter">D</span>"The Electoral College restores some of the weight in the political balance that large states lose." (paragraph 21)</label>
+  </div>
+  <div class="feedback" id="fb-q28"></div>
+</div>
+
+<div class="q-card" data-q="29" data-correct="B" data-skill="Compare sources" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 25</span><span class="q-skill">Compare sources — agree / disagree</span></div>
+  <div class="q-stem">On which point do Plumer (Source 2) and Posner (Source 3) MOST DIRECTLY disagree?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q29" value="A"><span class="choice-letter">A</span>Whether the Electoral College was a good idea when it was created by the Founding Fathers.</label>
+    <label class="choice-label"><input type="radio" name="q29" value="B"><span class="choice-letter">B</span>Whether the focus on swing states is a flaw that harms voters or a feature that benefits elections.</label>
+    <label class="choice-label"><input type="radio" name="q29" value="C"><span class="choice-letter">C</span>Whether the winner of the popular vote should always become president.</label>
+    <label class="choice-label"><input type="radio" name="q29" value="D"><span class="choice-letter">D</span>Whether the Constitution should be amended to change how electors are chosen.</label>
+  </div>
+  <div class="feedback" id="fb-q29"></div>
+</div>
+
+<div class="q-card" data-q="30" data-correct="B" data-skill="Vocabulary in context" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 26</span><span class="q-skill">Vocabulary in context</span></div>
+  <div class="q-quote">"And the arguments against direct elections are spurious at best." — Plumer, Source 2</div>
+  <div class="q-stem">The word "spurious" most nearly means:</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q30" value="A"><span class="choice-letter">A</span>based on careful research and expert opinion</label>
+    <label class="choice-label"><input type="radio" name="q30" value="B"><span class="choice-letter">B</span>false or not genuinely supported by evidence</label>
+    <label class="choice-label"><input type="radio" name="q30" value="C"><span class="choice-letter">C</span>emotionally persuasive but difficult to verify</label>
+    <label class="choice-label"><input type="radio" name="q30" value="D"><span class="choice-letter">D</span>outdated and no longer relevant to modern elections</label>
+  </div>
+  <div class="feedback" id="fb-q30"></div>
+</div>
+
+<div class="q-card" data-q="31" data-correct="B" data-skill="Multi-source synthesis" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 27</span><span class="q-skill">Multi-source synthesis</span></div>
+  <div class="q-stem">Both Plumer and Posner discuss the fact that the Electoral College winner can differ from the popular vote winner. How do their RESPONSES to this fact differ?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q31" value="A"><span class="choice-letter">A</span>Plumer argues this has happened too many times to be acceptable; Posner argues it has never actually happened.</label>
+    <label class="choice-label"><input type="radio" name="q31" value="B"><span class="choice-letter">B</span>Plumer treats it as a serious flaw proving the system is unfair; Posner treats it as a rare event that does not outweigh the system's benefits.</label>
+    <label class="choice-label"><input type="radio" name="q31" value="C"><span class="choice-letter">C</span>Plumer says this is only a problem in very close elections; Posner says it is a problem in every election.</label>
+    <label class="choice-label"><input type="radio" name="q31" value="D"><span class="choice-letter">D</span>Both authors agree this is the most serious problem but disagree about how to fix it.</label>
+  </div>
+  <div class="feedback" id="fb-q31"></div>
+</div>
+
+<div class="q-card" data-q="32" data-correct="B" data-skill="Text structure — argument" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 28</span><span class="q-skill">Text structure — argument</span></div>
+  <div class="q-stem">How is Source 2 (Plumer) primarily organized?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q32" value="A"><span class="choice-letter">A</span>A neutral overview of the system is given, followed by suggestions for gradual reform.</label>
+    <label class="choice-label"><input type="radio" name="q32" value="B"><span class="choice-letter">B</span>Multiple problems with the Electoral College are each described to build the argument that it should be abolished.</label>
+    <label class="choice-label"><input type="radio" name="q32" value="C"><span class="choice-letter">C</span>Posner's arguments for the Electoral College are introduced one by one and then refuted.</label>
+    <label class="choice-label"><input type="radio" name="q32" value="D"><span class="choice-letter">D</span>A series of historical controversies are presented in chronological order.</label>
+  </div>
+  <div class="feedback" id="fb-q32"></div>
+</div>
+
+<div class="q-card" data-q="33" data-correct="B" data-skill="Inference / author's purpose" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 29</span><span class="q-skill">Inference / author's purpose</span></div>
+  <div class="q-stem">In Source 3, why does Posner CONCEDE in paragraph 15 that the Electoral College "is not democratic in a modern sense"?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q33" value="A"><span class="choice-letter">A</span>Because he agrees with Plumer that the Electoral College is ultimately unfair.</label>
+    <label class="choice-label"><input type="radio" name="q33" value="B"><span class="choice-letter">B</span>Because acknowledging a weakness upfront makes his following defense of the system more credible.</label>
+    <label class="choice-label"><input type="radio" name="q33" value="C"><span class="choice-letter">C</span>Because he is required to include opposing views in any argument about the Constitution.</label>
+    <label class="choice-label"><input type="radio" name="q33" value="D"><span class="choice-letter">D</span>Because the 2000 election proved that the Electoral College is impossible to defend.</label>
+  </div>
+  <div class="feedback" id="fb-q33"></div>
+</div>
+
+<div class="q-card" data-q="34" data-correct="B" data-skill="Evaluate evidence" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 30</span><span class="q-skill">Evaluate evidence</span></div>
+  <div class="q-stem">Plumer uses the 1960 Louisiana example to argue the Electoral College is a "disaster" waiting to happen. How STRONG is this evidence?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q34" value="A"><span class="choice-letter">A</span>Very strong, because it shows the disaster has already happened and could happen again.</label>
+    <label class="choice-label"><input type="radio" name="q34" value="B"><span class="choice-letter">B</span>Moderately strong, because it shows a real vulnerability but also shows the system survived the threat.</label>
+    <label class="choice-label"><input type="radio" name="q34" value="C"><span class="choice-letter">C</span>Weak, because the example is 60 years old and electoral laws have changed significantly since then.</label>
+    <label class="choice-label"><input type="radio" name="q34" value="D"><span class="choice-letter">D</span>Not relevant, because the example involved Congress rather than the Electoral College.</label>
+  </div>
+  <div class="feedback" id="fb-q34"></div>
+</div>
+
+<div class="q-card" data-q="35" data-correct="B" data-skill="Multi-source critical reading" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 31</span><span class="q-skill">Multi-source critical reading — highest order</span></div>
+  <div class="q-stem">A student argues: "Source 1 proves that the Electoral College is fair because it was created as a compromise." What is the BEST response to this argument?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q35" value="A"><span class="choice-letter">A</span>The student is correct — Source 1 shows the Electoral College was designed to be fair to both large and small states.</label>
+    <label class="choice-label"><input type="radio" name="q35" value="B"><span class="choice-letter">B</span>The student misreads Source 1, which explains the process without arguing it is fair — it takes no position.</label>
+    <label class="choice-label"><input type="radio" name="q35" value="C"><span class="choice-letter">C</span>The student should cite Source 3 instead, since Posner's argument is more relevant to the question of fairness.</label>
+    <label class="choice-label"><input type="radio" name="q35" value="D"><span class="choice-letter">D</span>The student is incorrect because the Electoral College was not created as a compromise.</label>
+  </div>
+  <div class="feedback" id="fb-q35"></div>
+</div>
+
+<div class="q-card" data-q="36" data-correct="B" data-skill="Paired sources — purpose comparison" data-session="4">
+  <div class="q-meta"><span class="q-num">Question 32</span><span class="q-skill">Paired sources — purpose comparison</span></div>
+  <div class="q-stem">Which statement BEST describes something Plumer (Source 2) and Posner (Source 3) AGREE on?</div>
+  <div class="choices">
+    <label class="choice-label"><input type="radio" name="q36" value="A"><span class="choice-letter">A</span>The Electoral College should be replaced by a national popular vote immediately.</label>
+    <label class="choice-label"><input type="radio" name="q36" value="B"><span class="choice-letter">B</span>The Electoral College is not fully democratic in a modern sense, because electors — not citizens directly — choose the president.</label>
+    <label class="choice-label"><input type="radio" name="q36" value="C"><span class="choice-letter">C</span>Swing states receive too much attention during presidential campaigns, which is unfair to other voters.</label>
+    <label class="choice-label"><input type="radio" name="q36" value="D"><span class="choice-letter">D</span>The best solution is to reform the Electoral College rather than abolish it completely.</label>
+  </div>
+  <div class="feedback" id="fb-q36"></div>
+</div>
+
+<!-- Submit -->
+<div id="submit-wrap">
+  <button id="submit-btn" onclick="submitQuiz()">See my score →</button>
+</div>
+
+<!-- Score panel -->
+<div id="score-panel">
+  <div class="score-big" id="final-score">—</div>
+  <div class="score-sub" id="final-label">out of 32 questions</div>
+  <div class="score-bar-wrap"><div class="score-bar-fill" id="score-fill"></div></div>
+  <div class="score-breakdown" id="score-breakdown"></div>
+  <div class="skill-grid" id="skill-grid"></div>
+  <button class="reset-btn" onclick="resetQuiz()">Start over</button>
+</div>
+
+</div><!-- /container -->
+
+<script>
+// ── Answer data ────────────────────────────────────────────────────────────
+const QUESTIONS = [
+  { q:1,  correct:"B", skill:"Unreliable narrator",     session:2,
+    right:"A narrator who must argue for his own sanity is signaling the opposite. Sane people don't spend the opening of a story insisting they're sane.",
+    wrong:"A is what the narrator wants you to believe — not what the evidence shows. C and D are unsupported by the text." },
+  { q:2,  correct:"B", skill:"Vocabulary in context",   session:2,
+    right:"'Blood ran cold' = sudden fear or dread. The context (the eye triggers the feeling) confirms fear, not a physical condition.",
+    wrong:"A takes the phrase too literally. C and D have no connection to the context." },
+  { q:3,  correct:"C", skill:"Character / inference",   session:2,
+    right:"The narrator insists he is calm while describing obsession and planned murder. The gap between self-assessment and behavior is the key inference.",
+    wrong:"A is what the narrator CLAIMS. B has no textual support. D is contradicted by 'I loved the old man.'" },
+  { q:4,  correct:"B", skill:"Theme (Part A)",          session:2,
+    right:"Every element builds to the moment guilt forces confession. The theme is about conscience, not careless mistakes.",
+    wrong:"A confuses plot mechanism with theme. C is too narrow. D is unrelated to the story's focus." },
+  { q:5,  correct:"C", skill:"Text evidence (Part B)",  session:2,
+    right:"The heartbeat scene is the direct proof: guilt manifests as sound and forces confession. No real heartbeat exists — it's his conscience.",
+    wrong:"A shows planning (plot detail). B shows motivation (not theme evidence). D supports unreliable narrator, not theme." },
+  { q:6,  correct:"B", skill:"Author's craft / POV",    session:2,
+    right:"First-person unreliable narrator creates dramatic irony: the reader sees what the narrator can't — his 'proof' of sanity is proof of madness.",
+    wrong:"A is the opposite — first-person makes verification impossible. C is wrong; suspense comes from uncertainty. D is a secondary, not primary, effect." },
+  { q:7,  correct:"B", skill:"Main idea",               session:2,
+    right:"Every paragraph supports B: the brain mechanism, how authors exploit it, fictional immersion, and cognitive benefits.",
+    wrong:"A is too narrow (only mentions the experience). C overstates ('cannot tell the difference'). D is an unsupported opinion." },
+  { q:8,  correct:"B", skill:"Vocabulary in context",   session:2,
+    right:"'Physiological' = body's physical functions. Context: heart rate, adrenaline, attention — all physical body responses.",
+    wrong:"A (emotional) is a near-synonym trap — psychology and physiology are different. C and D have no connection to the sentence." },
+  { q:9,  correct:"B", skill:"Author's purpose",        session:2,
+    right:"The author explains fictional immersion to show WHY suspenseful stories stay with readers — connecting to the argument about suspense's psychological value.",
+    wrong:"A misrepresents the tone (no 'logical error' is suggested). C and D are opinions the author does not make." },
+  { q:10, correct:"B", skill:"Text structure",          session:2,
+    right:"Paragraph 1 poses the question. Paragraphs 2–5 answer it with scientific explanation and evidence. Classic question → answer structure.",
+    wrong:"A is wrong (no failed attempts). C is wrong (no opposing views). D is wrong (no historical timeline)." },
+  { q:11, correct:"B", skill:"Paired synthesis",        session:2,
+    right:"Poe creates suspense using the exact techniques (delayed resolution, withheld information) that the article explains scientifically. One is the example; one is the explanation.",
+    wrong:"A misreads both texts. C invents an argument Poe doesn't make. D contradicts the article's conclusion (suspense has benefits)." },
+  { q:12, correct:"C", skill:"Character motivation (A)",session:3,
+    right:"The barber's professional identity — 'I am a barber, not a murderer' — is more powerful than revenge. Not fear, not practicality: identity.",
+    wrong:"A (fear) is present but secondary. B is a practical concern, not the primary reason. D is explicitly contradicted — Torres is his enemy." },
+  { q:13, correct:"C", skill:"Text evidence (Part B)",  session:3,
+    right:"'I don't want to be a barber who shaves the corpse of his victim' is the clearest statement of professional identity as the motivating force.",
+    wrong:"A is context, not motivation. B supports the fear trap. D is Torres's line — evidence about Torres's knowledge, not the barber's motivation." },
+  { q:14, correct:"B", skill:"Inference",               session:3,
+    right:"The barber is feeling a painful empathy — he and Torres's victims share the same fear. This complicates his moral position.",
+    wrong:"A is unsupported — the thought is about feeling, not planning. C is possible but not what this specific thought reveals. D contradicts his consistent stance." },
+  { q:15, correct:"B", skill:"Vocabulary / character",  session:3,
+    right:"The barber draws a moral line: political killing for a cause = revolutionary. Personal killing for revenge = murderer. A firm distinction.",
+    wrong:"A overstates — he IS a revolutionary. C is unsupported. D inverts the situation — he is talking to himself, not Torres." },
+  { q:16, correct:"B", skill:"Theme",                   session:3,
+    right:"B captures what the story actually demonstrates: professional identity is more powerful than hatred. The barber's choice proves it.",
+    wrong:"A misreads the ending (no downfall). C is too general. D is contradicted — courage here means NOT acting." },
+  { q:17, correct:"B", skill:"Author's purpose / satire",session:3,
+    right:"The extreme, all-encompassing description ('every which way') signals satire. Vonnegut is exaggerating to expose the absurdity of enforced sameness.",
+    wrong:"A takes the description at face value, missing the satirical tone. C is too literal. D is the opposite of Vonnegut's intent." },
+  { q:18, correct:"A", skill:"Character motivation",    session:3,
+    right:"George knows the exact penalty — which reveals he has thought about removing the handicap. He's restrained by fear, not genuine agreement.",
+    wrong:"B is unsupported — he is clearly aware the system is unpleasant. C has no textual support. D inverts the scene." },
+  { q:19, correct:"B", skill:"Vocabulary in context",   session:3,
+    right:"'Unceasing vigilance' = constant watchfulness. Context: agents enforcing the law constantly confirms B.",
+    wrong:"A (generosity) is unrelated. C (legal authority) is what the agents HAVE, not what the word means. D (public celebration) is entirely off." },
+  { q:20, correct:"B", skill:"Theme (Part A)",          session:3,
+    right:"The absurd handicaps, Harrison's brief rebellion, and his death demonstrate that enforced sameness destroys brilliance without creating real equality.",
+    wrong:"A is what the GOVERNMENT believes. C overstates — Harrison's rebellion fails. D is the government's rationale, not a theme." },
+  { q:21, correct:"D", skill:"Text evidence (Part B)",  session:3,
+    right:"Harrison tearing off his handicaps makes the argument visible: without forced limitations, something extraordinary emerges — and is immediately destroyed.",
+    wrong:"A establishes the world but doesn't demonstrate the theme. B shows control mechanism. C shows enforcement/consequence less directly than D." },
+  { q:22, correct:"B", skill:"Paired literary synthesis",session:3,
+    right:"The barber acts from free principled choice. George cannot think deeply enough to fully formulate a choice — the system prevents it. Fundamentally different.",
+    wrong:"A misidentifies the barber's motivation as fear. C is wrong for George. D is the most tempting trap: both are passive but for completely different reasons." },
+  { q:23, correct:"B", skill:"Author's purpose",        session:4,
+    right:"Source 1 describes the PROCESS without evaluating it. Sources 2 and 3 take positions (for/against). This difference in purpose is fundamental.",
+    wrong:"A is wrong — Source 1 does not argue FOR keeping it. D is a trap — credibility ≠ purpose. C mischaracterizes what each source covers." },
+  { q:24, correct:"B", skill:"Main idea / claim",       session:4,
+    right:"Plumer's claim is stated explicitly: 'unfair, outdated, and irrational.' His entire argument builds toward abolition.",
+    wrong:"A is the opposite of his claim. C is a supporting detail, not the main claim. D is not stated — Plumer advocates abolition, not reform." },
+  { q:25, correct:"C", skill:"Author's purpose",        session:4,
+    right:"The '17 states' detail makes Plumer's abstract claim concrete: most voters are ignored. Details connect to the author's main argument.",
+    wrong:"A misreads this as anomalous — Plumer uses it as typical. B is not in the text. D invents a policy suggestion Plumer doesn't make." },
+  { q:26, correct:"B", skill:"Vocabulary in context",   session:4,
+    right:"Posner uses 'anachronism' and defines it in the same sentence: 'a nondemocratic method that ought to be overruled.' Something from the past that doesn't fit the present.",
+    wrong:"A — anachronism is not a legal term. C describes unfairness, a different concept. D is close but misses the key idea of BELONGING TO THE PAST." },
+  { q:27, correct:"B", skill:"Counterargument (A)",     session:4,
+    right:"Posner reframes the criticism: yes, campaigns focus on swing states — but the MOST ENGAGED voters decide. Same fact, opposite spin.",
+    wrong:"A is not in the text. C is factually inaccurate. D is a possible extension of his logic but not what he actually says." },
+  { q:28, correct:"C", skill:"Text evidence (Part B)",  session:4,
+    right:"This sentence is Posner's direct defense: informed, attentive voters deciding elections is GOOD, not bad. It directly reframes the swing-state criticism.",
+    wrong:"A supports a different argument (trans-regional appeal). B is about electoral ties. D is about big-state balance — a different reason." },
+  { q:29, correct:"B", skill:"Compare sources",         session:4,
+    right:"Plumer: swing-state focus = flaw (most voters ignored). Posner: swing-state focus = feature (most engaged voters decide). Same fact, opposite evaluation.",
+    wrong:"A is not discussed by either author. C — both acknowledge this but it's not where they most directly clash. D is not discussed by Posner." },
+  { q:30, correct:"B", skill:"Vocabulary in context",   session:4,
+    right:"'Spurious' = false, not genuinely supported. Context: Plumer is dismissing arguments against direct elections entirely.",
+    wrong:"A is the opposite. C (emotionally persuasive) describes rhetoric. D (outdated) describes 'anachronism' — a different word from earlier." },
+  { q:31, correct:"B", skill:"Multi-source synthesis",  session:4,
+    right:"Plumer: popular-vote loser = serious flaw. Posner: rare event (1888 and 2000) that doesn't outweigh benefits. Same fact, different weight.",
+    wrong:"A — Posner does NOT claim it has never happened. C misrepresents both arguments. D is wrong — Posner does NOT agree it's the most serious problem." },
+  { q:32, correct:"B", skill:"Text structure",          session:4,
+    right:"Source 2 is organized by problems: elector confusion, faithless electors, tie risk, swing-state unfairness — each building the argument for abolition.",
+    wrong:"A misidentifies Source 2 as neutral. C inverts the structure — Plumer doesn't refute Posner. D is wrong — no chronological timeline." },
+  { q:33, correct:"B", skill:"Inference / author's purpose",session:4,
+    right:"Acknowledging a weakness upfront is a rhetorical strategy: it signals intellectual honesty and makes the rest of the argument harder to dismiss.",
+    wrong:"A misreads Posner — he ultimately defends the system. C is invented. D contradicts Posner's position entirely." },
+  { q:34, correct:"B", skill:"Evaluate evidence",       session:4,
+    right:"The Louisiana example shows a REAL risk (the system could fail) but the system survived (Nixon validated the correct electors). Real vulnerability, no actual catastrophe.",
+    wrong:"A overstates (the disaster didn't actually happen). C is reasonable but the structural vulnerability hasn't changed. D misidentifies the example's content." },
+  { q:35, correct:"B", skill:"Multi-source critical reading",session:4,
+    right:"Source 1 is explanatory — it describes the process without evaluating it. The student incorrectly treats a description as an argument. Most common error in multi-source sets.",
+    wrong:"A accepts the misreading. C is a reasonable suggestion but doesn't address the core error. D makes a factual error — the Electoral College WAS created as a compromise." },
+  { q:36, correct:"B", skill:"Paired sources comparison",session:4,
+    right:"Both Plumer and Posner acknowledge the Electoral College isn't 'democratic in a modern sense' — electors, not citizens directly, choose the president. This is their shared admission.",
+    wrong:"A is Plumer's position only. C is Plumer's criticism that Posner REJECTS. D is a middle-ground position neither author takes." },
+];
+
+// Input name → question index map
+const nameToIdx = {};
+QUESTIONS.forEach(function(q, i) {
+  nameToIdx['q' + (i + 1)] = i;
+});
+
+let answered = 0;
+const total = QUESTIONS.length;
+const userAnswers = {};
+
+// ── Choice handlers ────────────────────────────────────────────────────────
+document.querySelectorAll('.choice-label').forEach(function(label) {
+  label.addEventListener('click', function() {
+    const input = label.querySelector('input');
+    const name  = input.name;
+    if (userAnswers[name] !== undefined) return; // already answered
+
+    const value = input.value;
+    input.checked = true;
+    userAnswers[name] = value;
+    answered++;
+
+    const card = label.closest('.q-card');
+    const qIdx  = parseInt(card.dataset.q) - 1;
+    const qData = QUESTIONS[qIdx];
+    const isCorrect = (value === qData.correct);
+
+    // Lock all choices
+    card.querySelectorAll('.choice-label').forEach(function(lbl) {
+      lbl.classList.add('disabled');
+      const v = lbl.querySelector('input').value;
+      if (v === qData.correct)         lbl.classList.add('correct');
+      else if (v === value && !isCorrect) lbl.classList.add('incorrect');
+    });
+
+    // Show feedback
+    const fb = document.getElementById('fb-q' + card.dataset.q);
+    fb.classList.add('show');
+    if (isCorrect) {
+      fb.classList.add('correct-fb');
+      fb.innerHTML = '<strong>✅ Correct!</strong> ' + qData.right;
+    } else {
+      fb.classList.add('incorrect-fb');
+      fb.innerHTML = '<strong>❌ Not quite.</strong> ' + qData.right +
+        (qData.wrong ? '<div class="trap-line"><span class="trap-label">Trap to watch: </span>' + qData.wrong + '</div>' : '');
+    }
+
+    updateProgress();
+
+    // Show submit button when all answered
+    if (answered === total) {
+      document.getElementById('submit-btn').classList.add('visible');
+      document.getElementById('submit-btn').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+});
+
+function updateProgress() {
+  const pct = Math.round((answered / total) * 100);
+  document.getElementById('progress-bar-inner').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = answered + ' of ' + total + ' answered';
+}
+
+function submitQuiz() {
+  let correct = 0;
+  const skillMap = {};
+  const sessionMap = { 2:0, 3:0, 4:0 };
+  const sessionTotal = { 2:0, 3:0, 4:0 };
+
+  QUESTIONS.forEach(function(q, i) {
+    const name = 'q' + (i + 1);
+    const ua = userAnswers[name];
+    const isCorrect = ua === q.correct;
+    if (isCorrect) correct++;
+    if (!skillMap[q.skill]) skillMap[q.skill] = { right: 0, total: 0 };
+    skillMap[q.skill].total++;
+    if (isCorrect) skillMap[q.skill].right++;
+    sessionTotal[q.session]++;
+    if (isCorrect) sessionMap[q.session]++;
+  });
+
+  document.getElementById('final-score').textContent = correct + ' / ' + total;
+  const pct = Math.round((correct / total) * 100);
+  document.getElementById('final-label').textContent = pct + '% correct · ' + correct + ' of ' + total + ' questions';
+
+  setTimeout(function() {
+    document.getElementById('score-fill').style.width = pct + '%';
+  }, 100);
+
+  // Session breakdown
+  const bd = document.getElementById('score-breakdown');
+  const colors = { 2: '#4A235A', 3: '#2E75B6', 4: '#0C5C6B' };
+  bd.innerHTML = [2, 3, 4].map(function(s) {
+    return '<div class="score-session"><span class="val" style="color:' + colors[s] + '">' +
+      sessionMap[s] + '/' + sessionTotal[s] + '</span><span class="lbl">Session ' + s + '</span></div>';
+  }).join('');
+
+  // Skill breakdown
+  const sg = document.getElementById('skill-grid');
+  sg.innerHTML = Object.keys(skillMap).map(function(sk) {
+    const d = skillMap[sk];
+    const p = Math.round((d.right / d.total) * 100);
+    const col = p >= 80 ? '#1D6A39' : p >= 60 ? '#2E75B6' : '#7B241C';
+    return '<div class="skill-item"><div class="sk-name">' + sk + ' (' + d.right + '/' + d.total + ')</div>' +
+      '<div class="sk-bar-bg"><div class="sk-bar" style="width:' + p + '%;background:' + col + '"></div></div></div>';
+  }).join('');
+
+  document.getElementById('score-panel').classList.add('show');
+  document.getElementById('submit-btn').style.display = 'none';
+  document.getElementById('score-panel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetQuiz() {
+  Object.keys(userAnswers).forEach(function(k) { delete userAnswers[k]; });
+  answered = 0;
+
+  document.querySelectorAll('.choice-label').forEach(function(lbl) {
+    lbl.classList.remove('correct', 'incorrect', 'disabled');
+    lbl.querySelector('input').checked = false;
+  });
+  document.querySelectorAll('.feedback').forEach(function(fb) {
+    fb.className = 'feedback';
+    fb.innerHTML = '';
+  });
+  document.getElementById('score-panel').classList.remove('show');
+  document.getElementById('submit-btn').classList.remove('visible');
+  document.getElementById('submit-btn').style.display = '';
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
